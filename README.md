@@ -1,4 +1,4 @@
 ProjectManagerBundle
 ====================
 
-Symfony2 Project Manager Bundle
+Project Manager Bundle for Symfony2
