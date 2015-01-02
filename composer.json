@@ -3,6 +3,7 @@
     "type": "symfony-bundle",
     "description": "Project manager bundle for Symfony2",
     "keywords": ["project manager"],
+    "version":"1.0.0",
     "authors": [
         {
             "name": "Pletnev Ruslan",
