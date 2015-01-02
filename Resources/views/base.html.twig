@@ -1,0 +1,82 @@
+{% extends "PletnevProjectManagerBundle::charisma_blank.html.twig" %}
+
+{% if form is defined %}
+    {% form_theme form 'form_table_layout.html.twig' %}
+{% endif %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script>
+        function ajaxLoad(flag){
+            if(flag){
+                if(!$('#ajax-load').length){
+                    $('body').append('<div id="ajax-load"><img src="/bundles/pletnevprojectmanager/img/ajax-loaders/ajax-loader-8.gif"></div>');
+                    $('#ajax-load').css({
+                        position: 'fixed',
+                        top: '0px',
+                        left: '0px',
+                        right: '0px',
+                        bottom: '0px',
+                        'background-color': 'rgba(0,0,0,0.3)',
+                        'text-align': 'center',
+                        'padding-top': '20%',
+                        'z-index': '9999'
+                    });
+                }else{
+                    $('#ajax-load').show();
+                }
+                
+            }else{
+                $('#ajax-load').hide();
+            }
+        }
+        
+        $(function() {
+
+            $('#themes a').click(function(e) {
+                currentTheme = $(this).attr('data-value');
+                ajaxLoad(1);
+                $.get('{{ path('pletnev_pm_setusertheme') }}', {
+                    theme: currentTheme
+                }, function(data) {
+                    window.location = '';
+                    //ajaxLoad(0);
+                });
+                e.stopImmediatePropagation();
+                return false;
+            });
+            
+            //$('form input[type=checkbox]').addClass('iphone-toggle');
+        });
+
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% set theme_path = '/bundles/pletnevprojectmanager/' %}
+    
+    {% set settings = settings() %}
+    
+    {% if settings and settings.theme %}
+        {% set theme_path = settings.theme == 'classic' ? theme_path~'bower_components/bootstrap/dist/css/bootstrap.min.css' : theme_path~'css/bootstrap-'~settings.theme~'.min.css' %}
+    {% else %}
+        {% set theme_path = theme_path~'css/bootstrap-cerulean.min.css' %}
+    {% endif %}
+    
+    <link href="{{ theme_path }}" rel="stylesheet">
+    
+    <style>
+        form>table {
+            width: 100%;
+        }
+        .iPhoneCheckContainer {
+            width: 96px;
+            display: inline-block;
+        }
+        form>table div>label {
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}

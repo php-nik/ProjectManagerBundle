@@ -1,0 +1,20 @@
+{%  extends "PletnevProjectManagerBundle:Author:layout.html.twig" %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/iphpcore/js/tiny_mce/jquery.tinymce.js') }}"></script>
+    <script src="{{ asset('bundles/iphpcore/js/tiny_mce/tiny_mce.js') }}"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path(route_prefix) }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path(route_prefix~'_projects') }}">Проекты</a></li>
+    <li>Новый проект</li>
+{% endblock %}
+
+{% block body %}
+    
+    {{ form_javascript(form) }}
+    {{ form(form) }}
+    
+{% endblock %}

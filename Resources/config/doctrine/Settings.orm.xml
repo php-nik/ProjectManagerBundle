@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Pletnev\ProjectManagerBundle\Entity\SettingsRepository" name="Pletnev\ProjectManagerBundle\Entity\Settings" table="pm__settings">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        
+        <field name="theme" type="string" column="theme" length="32" nullable="true"/>
+        
+        <one-to-one field="user" target-entity="Application\Sonata\UserBundle\Entity\User">
+            <join-column name="user_id"/>
+        </one-to-one>
+        
+        <many-to-many field="favoriteProjects" target-entity="Pletnev\ProjectManagerBundle\Entity\Project">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="pm__settings_project">
+                <join-columns>
+                    <join-column name="project_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="settings_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

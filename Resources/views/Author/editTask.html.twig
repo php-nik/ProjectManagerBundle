@@ -1,0 +1,25 @@
+{%  extends "PletnevProjectManagerBundle:Author:tabs.html.twig" %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/iphpcore/js/tiny_mce/jquery.tinymce.js') }}"></script>
+    <script src="{{ asset('bundles/iphpcore/js/tiny_mce/tiny_mce.js') }}"></script>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <li><a href="{{ path(route_prefix) }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path(route_prefix~'_projects') }}">Проекты</a></li>
+    <li><a href="{{ path(route_prefix~'_project' , {projectSlug: project.slug}) }}">{{ project }}</a></li>
+    <li><a href="{{ path(route_prefix~'_tasks' , {projectSlug: project.slug}) }}">Задачи</a></li>
+    <li><a href="{{ path(route_prefix~'_task' , {projectSlug: project.slug , taskId: task.id}) }}">{{ task }}</a></li>
+    <li>Редактирование</li>
+{% endblock %}
+
+
+{% block body_inner %}
+    <h1>Задача #{{ task.id }}</h1>
+    {{ form_javascript(form) }}
+    {{ form(form) }}
+    
+{% endblock %}

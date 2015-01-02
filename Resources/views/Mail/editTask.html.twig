@@ -1,0 +1,9 @@
+Пользователь: {{ user }} изменил задачу #{{ task.id }} "{{ task.title }}"<br>
+{% if task.title != oldTask.title %}Тема изменена с "{{ oldTask.title }}" на "{{ task.title }}"<br>{% endif %}
+{% if task.status != oldTask.status %}Статус изменен с "{{ oldTask.status }}" на "{{ task.status }}"<br>{% endif %}
+{% if task.priority != oldTask.priority %}Приоритет изменен с "{{ oldTask.priority }}" на "{{ task.priority }}"<br>{% endif %}
+{% if task.assignedTo != oldTask.assignedTo %}Назначено изменено с "{{ oldTask.assignedTo }}" на "{{ task.assignedTo }}"<br>{% endif %}
+{% if task.minutes != oldTask.minutes %}Затрачено изменено с "{{ oldTask.hours }} ч." на "{{ task.hours }} ч."<br>{% endif %}
+{% if task.isPaid != oldTask.isPaid %}Оплачено изменено с "{{ oldTask.isPaid ? 'да' : 'нет' }}" на "{{ task.isPaid ? 'да' : 'нет'}}"<br>{% endif %}
+{% if task.doneRation != oldTask.doneRation %}Выполнено изменено с "{{ oldTask.doneRation }}%" на "{{ task.doneRation }}%"<br>{% endif %}
+{% if task.description != oldTask.description %}Описание изменено на:<br><hr> {{ task.description|raw }}{% endif %}

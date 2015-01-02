@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="pletnev_pm" path="/">
+        <default key="_controller">PletnevProjectManagerBundle:Pm:index</default>
+    </route>
+    
+    <route id="pletnev_pm_project_favorite" path="/project/favorite">
+        <default key="_controller">PletnevProjectManagerBundle:Pm:favoriteProject</default>
+    </route>
+    
+    <route id="pletnev_pm_setusertheme" path="/set-theme">
+        <default key="_controller">PletnevProjectManagerBundle:Pm:setUserTheme</default>
+    </route>
+    
+    <import resource="@PletnevProjectManagerBundle/Resources/config/routing/author.xml" prefix="/author"/>
+
+    <import resource="@PletnevProjectManagerBundle/Resources/config/routing/admin.xml" prefix="/admin"/>
+    
+</routes>
