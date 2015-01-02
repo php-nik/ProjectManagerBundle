@@ -38,7 +38,7 @@ class AdminController extends BaseController {
 
         //$projects = $this->getDoctrine()->getRepository('PletnevProjectManagerBundle:Project')->findBy(array('isFavorite' => 1));
         $projects = $this->getSettings()->getFavoriteProjects();
-        
+
         return array(
             'projects' => $projects,
         );
@@ -124,7 +124,7 @@ class AdminController extends BaseController {
             $eventDispatcher = $this->getEventDispatcher();
             $eventDispatcher->dispatch('pm.task.postPersist', new TaskEvent($task, $user));
 
-            return $this->redirect($this->generateUrl('pletnev_pm_admin_tasks', array('projectId' => $projectSlug)));
+            return $this->redirect($this->generateUrl('pletnev_pm_admin_tasks', array('projectSlug' => $projectSlug)));
         }
 
         return array(
@@ -181,7 +181,7 @@ class AdminController extends BaseController {
 
             $this->addNoticeMessage('Задача успешно сохранена');
 
-            return $this->redirect($this->generateUrl('pletnev_pm_admin_tasks', array('projectId' => $projectSlug)));
+            return $this->redirect($this->generateUrl('pletnev_pm_admin_tasks', array('projectSlug' => $projectSlug)));
         }
 
         return array(
@@ -214,7 +214,7 @@ class AdminController extends BaseController {
 
             $this->addNoticeMessage('Проект успешно создан');
 
-            return $this->redirect($this->generateUrl('pletnev_pm_admin_project', array('projectId' => $project->getId())));
+            return $this->redirect($this->generateUrl('pletnev_pm_admin_project', array('projectSlug' => $project->getId())));
         }
 
         return array(
