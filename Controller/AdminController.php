@@ -12,6 +12,7 @@ use Pletnev\ProjectManagerBundle\Entity\Project;
 use Pletnev\ProjectManagerBundle\Event\TaskEvent;
 use Pletnev\ProjectManagerBundle\Form\SettingsType;
 use Pletnev\ProjectManagerBundle\Form\UserType;
+use Pletnev\ProjectManagerBundle\Entity\TaskTime;
 
 class AdminController extends BaseController {
 
@@ -230,7 +231,7 @@ class AdminController extends BaseController {
     public function editProjectAction(Request $request, $projectSlug) {
         $user = $this->getUser();
 
-        $project = $this->getProjectRepo()->findOneBy(array('slug'=>$projectSlug));
+        $project = $this->getProjectRepo()->findOneBy(array('slug' => $projectSlug));
 
         $form = $this->createForm(new ProjectType(), $project);
 
@@ -306,6 +307,36 @@ class AdminController extends BaseController {
 
         return array(
             'form' => $form->createView(),
+        );
+    }
+
+    /**
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param type $taskId
+     * @return type
+     * @Template
+     */
+    public function timesAction(Request $request, $taskId) {
+        $action = $request->get('action');
+
+        $task = $this->getDoctrine()->getRepository('PletnevProjectManagerBundle:Task')->find($taskId);
+        $em = $this->getDoctrine()->getManager();
+
+        if ($action == 'start' && $task->getOpenTime() == null) {
+            $time = new TaskTime();
+            $time->setTask($task);
+            $task->addTime($time);
+            $em->persist($task);
+            $em->flush();
+        } elseif ($action == 'stop' && ($time = $task->getOpenTime())) {
+            $time->setStop(new \Datetime());
+            $em->persist($time);
+            $em->flush();
+        }
+
+        return array(
+            'task' => $task,
         );
     }
 

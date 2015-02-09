@@ -51,4 +51,8 @@
     <route id="pletnev_pm_admin_settings" path="/settings">
         <default key="_controller">PletnevProjectManagerBundle:Admin:settings</default>
     </route>
+    
+    <route id="pletnev_pm_admin_task_times" path="/task/{taskId}/times">
+        <default key="_controller">PletnevProjectManagerBundle:Admin:times</default>
+    </route>
 </routes>

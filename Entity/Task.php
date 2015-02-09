@@ -3,6 +3,7 @@
 namespace Pletnev\ProjectManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Task
@@ -68,12 +69,14 @@ class Task {
      * @var \Doctrine\Common\Collections\Collection
      */
     private $watcherUsers;
+    private $times;
 
     /**
      * Constructor
      */
     public function __construct() {
-        $this->watcherUsers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->watcherUsers = new ArrayCollection();
+        $this->times = new ArrayCollection();
     }
 
     /**
@@ -178,8 +181,8 @@ class Task {
      * @return float
      */
     public function getHours() {
-        if($this->hours===null){
-            $this->hours = intval($this->minutes)/60;
+        if ($this->hours === null) {
+            $this->hours = intval($this->minutes) / 60;
         }
         return $this->hours;
     }
@@ -386,6 +389,44 @@ class Task {
      */
     public function getMinutes() {
         return $this->minutes;
+    }
+
+    public function getTimes() {
+        return $this->times;
+    }
+
+    public function setTimes($times) {
+        $this->times = $times;
+        return $this;
+    }
+
+    public function addTime(TaskTime $time) {
+        if (!$this->times->contains($time))
+            $this->times->add($time);
+    }
+
+    public function getOpenTime() {
+        if ($this->times->count() && $this->times->last()->getStop() == null) {
+            return $this->times->last();
+        }
+        return null;
+    }
+    /**
+     *
+     * @return \DateInterval
+     */
+    public function getTotalTime() {
+        $reference = new \DateTime();
+        $endTime = clone $reference;
+
+        foreach ($this->times as $time) {
+            if($time->getStart() && $time->getStop()){
+                $dateInterval = $time->getStart()->diff($time->getStop());
+                $endTime = $endTime->add($dateInterval);
+            }
+        }
+
+        return $reference->diff($endTime);
     }
 
 }

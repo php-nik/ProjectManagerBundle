@@ -23,3 +23,9 @@
     {{ form(form) }}
     
 {% endblock %}
+
+{% block column_left %}
+    {{ parent() }}
+    
+    {{ render(controller('PletnevProjectManagerBundle:Admin:times' , {taskId : task.id})) }}
+{% endblock %}

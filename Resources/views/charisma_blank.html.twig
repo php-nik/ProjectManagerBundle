@@ -153,6 +153,7 @@
         
         <!-- left menu starts -->
         <div class="col-sm-2 col-lg-2">
+            {% block column_left %}
             <div class="sidebar-nav">
                 <div class="nav-canvas">
                     <div class="nav-sm nav nav-stacked">
@@ -206,6 +207,7 @@
                     {#<label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>#}
                 </div>
             </div>
+                {% endblock column_left %}
         </div>
         <!--/span-->
         <!-- left menu ends -->

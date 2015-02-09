@@ -44,5 +44,11 @@
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
+        
+        <one-to-many target-entity="TaskTime" mapped-by="task" field="times">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>
