@@ -3,11 +3,11 @@
 namespace Pletnev\ProjectManagerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Iphp\CoreBundle\Controller\RubricAwareController;
+//use Iphp\CoreBundle\Controller\RubricAwareController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pletnev\ProjectManagerBundle\Entity\Settings;
 
-class BaseController extends RubricAwareController {
+class BaseController extends Controller {
 
     /**
      *
