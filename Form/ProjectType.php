@@ -13,7 +13,9 @@ class ProjectType extends AbstractType {
                 ->add('slug')
                 ->add('url' , 'url')
                 ->add('author')
-                ->add('description' , 'genemu_tinymce' , array('attr'=>array('style'=>'width:100%;')))
+                ->add('description' , 'textarea' , array(
+                    'attr'=>array('class'=>'tinymce')
+                ))
                 ->add('members' , null , array(
                     'expanded'=>TRUE,
                 ))

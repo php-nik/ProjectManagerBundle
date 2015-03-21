@@ -3,7 +3,6 @@
     "type": "symfony-bundle",
     "description": "Project manager bundle for Symfony2",
     "keywords": ["project manager"],
-    "version":"1.0.1",
     "authors": [
         {
             "name": "Pletnev Ruslan",
@@ -11,7 +10,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.2",
+        "stfalcon/tinymce-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {

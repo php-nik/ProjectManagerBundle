@@ -54,7 +54,9 @@ class TaskType extends AbstractType {
                 ->add('doneRation' , 'choice' , array(
                     'choices'=>  $this->doneRationChoices,
                 ))
-                ->add('description' , 'genemu_tinymce')
+                ->add('description' , 'textarea' , array(
+                    'attr'=>array('class'=>'tinymce')
+                ))
                 ->add('watcherUsers' , null , array(
                     'expanded'=>true,
                     'query_builder'=>function($repo) use($users){
