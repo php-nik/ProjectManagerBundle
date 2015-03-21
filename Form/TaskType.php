@@ -23,7 +23,7 @@ class TaskType extends AbstractType {
         $this->doctrine=$doctrine;
 
         for($i=0;$i<=100;$i+=10){
-            $this->doneRationChoices[$i]=$i.' %';
+            $this->doneRationChoices[$i]=$i.' %    ';
         }
 
     }
