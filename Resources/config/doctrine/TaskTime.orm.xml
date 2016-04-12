@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Pletnev\ProjectManagerBundle\Entity\TaskTimeRepository" name="Pletnev\ProjectManagerBundle\Entity\TaskTime" table="pm__task_time">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="start" type="datetime" column="start"/>
+        <field name="stop" type="datetime" column="stop" nullable="true"/>
+        
+        <many-to-one target-entity="Task" field="task" inversed-by="times">
+            <join-column name="task_id"/>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

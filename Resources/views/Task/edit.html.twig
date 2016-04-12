@@ -1,0 +1,23 @@
+{%  extends "PletnevProjectManagerBundle:Task:tabs.html.twig" %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path('pletnev_pm') }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path('pletnev_pm_projects') }}">Проекты</a></li>
+    <li><a href="{{ path('pletnev_pm_project' , {id: project.id}) }}">{{ project }}</a></li>
+    <li><a href="{{ path('pletnev_pm_tasks' , {id: project.id}) }}">Задачи</a></li>
+    <li><a href="{{ path('pletnev_pm_task' , {id: task.id}) }}">{{ task }}</a></li>
+    <li>Редактирование</li>
+{% endblock %}
+
+
+{% block body_inner %}
+    <h1>Задача #{{ task.id }}</h1>
+    {{ form(form) }}
+    
+{% endblock %}
+
+{% block column_left %}
+    {{ parent() }}
+    
+    {{ render(controller('PletnevProjectManagerBundle:Task:times' , {taskId : task.id})) }}
+{% endblock %}

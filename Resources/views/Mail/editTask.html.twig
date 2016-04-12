@@ -1,0 +1,5 @@
+Пользователь: {{ user }} изменил задачу #{{ task.id }} "{{ task.title }}"<br>
+
+{% for key,change in changes %}
+    {{ key }}: c {{ change[0] }} по {{ change[1] }}<br>
+{% endfor %}

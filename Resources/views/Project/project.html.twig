@@ -1,0 +1,26 @@
+{%  extends "PletnevProjectManagerBundle:Task:tabs.html.twig" %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path('pletnev_pm') }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path('pletnev_pm_projects') }}">Проекты</a></li>
+    <li>{{ project }}</li>
+{% endblock %}
+
+{% block body_inner %}
+    <h1>{{ project }}</h1>
+    
+    <table class="table table-bordered">
+        <tr>
+            <th>Автор</th>
+            <td>{{ project.author }}</td>
+        </tr>
+        <tr>
+            <th>Описание</th>
+            <td>{{ project.description | raw }}</td>
+        </tr>
+        <tr>
+            <th>Участики</th>
+            <td>{{ project.members|join(', ') }}</td>
+        </tr>
+    </table>
+{% endblock %}

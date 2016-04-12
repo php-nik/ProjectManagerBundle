@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="pletnev_project_manager.example.class">Pletnev\ProjectManagerBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="pletnev_project_manager.example" class="%pletnev_project_manager.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    
+    <services>
+        <!--<service id="pletnev_pm.checkofficeuser" class="Pletnev\ProjectManagerBundle\Controller\CheckUserListener">
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
+        </service>-->
+        
+        <!--<service id="pletnev_pm.tasksubscriber" class="Pletnev\ProjectManagerBundle\EventListener\TaskSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="service_container" />
+        </service>-->
+        
+        <service id="pm_settings_extension" class="Pletnev\ProjectManagerBundle\Twig\SettingsExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="pletnev_pm.settings_manager" />
+        </service>
+        
+        <service id="pletnev_pm.settings_manager" class="Pletnev\ProjectManagerBundle\Manager\SettingsManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        
+        <service id="pletnev_pm.project_manager" class="Pletnev\ProjectManagerBundle\Manager\ProjectManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        
+        <service id="pletnev_pm.task_manager" class="Pletnev\ProjectManagerBundle\Manager\TaskManager">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="pletnev_pm.project_manager" />
+            <argument type="service" id="event_dispatcher" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        
+        <service id="pletnev_pm.task_subscriber" class="Pletnev\ProjectManagerBundle\EventListener\TaskSubscriber">
+            <tag name="doctrine.event_subscriber"/>
+            <argument type="service" id="service_container" />
+        </service>
+    
+    </services>
+    
+    
+</container>

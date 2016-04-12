@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Pletnev\ProjectManagerBundle\Entity\TaskRepository" name="Pletnev\ProjectManagerBundle\Entity\Task" table="pm__task" >
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="title" type="string" column="title" length="255"/>
+        <field name="description" type="text" column="description" nullable="true"/>
+        <field name="createDate" type="datetime" column="create_date"/>
+        <field name="dueDate" type="datetime" column="due_date" nullable="true"/>
+        <field name="minutes" type="integer" column="minutes"  nullable="true"/>
+        <field name="doneRation" type="smallint" column="done_ratio"/>
+        <field name="isPaid" type="boolean" column="is_paid"/>
+        
+    
+        <many-to-one target-entity="Project" field="project" inversed-by="tasks">
+            <join-column name="project_id"/>
+        </many-to-one>
+        
+        <many-to-one target-entity="TaskStatus" field="status">
+            <join-column name="status_id"/>
+        </many-to-one>
+        
+        <many-to-one target-entity="TaskPriority" field="priority">
+            <join-column name="priority_id"/>
+        </many-to-one>
+        
+        <!-- назначена -->
+        <many-to-one target-entity="Application\Sonata\UserBundle\Entity\User" field="assignedTo">
+            <join-column name="assignedto_id"/>
+        </many-to-one>
+        
+        <!-- наблюдатели -->
+        <many-to-many field="watcherUsers" target-entity="Application\Sonata\UserBundle\Entity\User">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="pm__task_watcher_user">
+                <join-columns>
+                    <join-column name="task_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="user_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+        
+        <many-to-one target-entity="Application\Sonata\UserBundle\Entity\User" field="author">
+            <join-column name="author_id"/>
+        </many-to-one>
+        
+        <one-to-many target-entity="TaskTime" mapped-by="task" field="times">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+    </entity>
+</doctrine-mapping>

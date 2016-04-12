@@ -1,0 +1,13 @@
+{%  extends "PletnevProjectManagerBundle::layout.html.twig" %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path('pletnev_pm') }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path('pletnev_pm_projects') }}">Проекты</a></li>
+    <li>Новый проект</li>
+{% endblock %}
+
+{% block body %}
+    
+    {{ form(form) }}
+    
+{% endblock %}

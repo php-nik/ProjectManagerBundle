@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="ru" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Priority">
+                <source>Priority</source>
+                <target>Приоритет</target>
+            </trans-unit>
+            
+            <trans-unit id="Assigned to">
+                <source>Assigned to</source>
+                <target>Назначена</target>
+            </trans-unit>
+            
+            <trans-unit id="Hours">
+                <source>Hours</source>
+                <target>Затрачено (ч.)</target>
+            </trans-unit>
+            
+            <trans-unit id="Minutes">
+                <source>Minutes</source>
+                <target>Затрачено (мин.)</target>
+            </trans-unit>
+            
+            <trans-unit id="Done ration">
+                <source>Done ration</source>
+                <target>Выполнено</target>
+            </trans-unit>
+            
+            <trans-unit id="Watcher users">
+                <source>Watcher users</source>
+                <target>Наблюдатели</target>
+            </trans-unit>
+            
+            <trans-unit id="Is favorite">
+                <source>Is favorite</source>
+                <target>В избранных</target>
+            </trans-unit>
+            
+            <trans-unit id="Members">
+                <source>Members</source>
+                <target>Участники</target>
+            </trans-unit>
+            
+            <trans-unit id="Is paid">
+                <source>Is paid</source>
+                <target>Оплачено</target>
+            </trans-unit>
+            
+            <trans-unit id="Username">
+                <source>Username</source>
+                <target>Логин</target>
+            </trans-unit>
+            
+            <trans-unit id="Plain password">
+                <source>Plain password</source>
+                <target>Новый пароль</target>
+            </trans-unit>
+            
+            <trans-unit id="Theme">
+                <source>Theme</source>
+                <target>Тема</target>
+            </trans-unit>
+            
+            <trans-unit id="Slug">
+                <source>Slug</source>
+                <target>Алиас</target>
+            </trans-unit>
+            
+            <trans-unit id="Title">
+                <source>Title</source>
+                <target>Название</target>
+            </trans-unit>
+            
+            <trans-unit id="Description">
+                <source>Description</source>
+                <target>Описание</target>
+            </trans-unit>
+            
+            <trans-unit id="Status">
+                <source>Status</source>
+                <target>Статус</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

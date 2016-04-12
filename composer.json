@@ -1,0 +1,22 @@
+{
+    "name": "php-nik/pm-bundle",
+    "type": "symfony-bundle",
+    "description": "Project manager bundle for Symfony2",
+    "keywords": ["project manager"],
+    "authors": [
+        {
+            "name": "Pletnev Ruslan",
+            "email": "php-nik@mail.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "stfalcon/tinymce-bundle": "@stable"
+    },
+    "autoload": {
+        "psr-0": {
+            "Pletnev\\ProjectManagerBundle": ""
+        }
+    },
+    "target-dir": "Pletnev/ProjectManagerBundle"
+}

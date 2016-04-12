@@ -1,0 +1,16 @@
+{%  extends "PletnevProjectManagerBundle:Task:tabs.html.twig" %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path('pletnev_pm') }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path('pletnev_pm_projects') }}">Проекты</a></li>
+    <li><a href="{{ path('pletnev_pm_project' , {id: project.id}) }}">{{ project }}</a></li>
+    <li>Настройки</li>
+{% endblock %}
+
+
+
+{% block body_inner %}
+    
+    {{ form(form) }}
+    
+{% endblock %}

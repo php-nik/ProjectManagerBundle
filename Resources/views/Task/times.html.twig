@@ -1,0 +1,31 @@
+<div id="times" class="box center">
+    <div class="box-inner">
+        <div class="box-content">
+            {% if task.openTime %}
+                <a id="timesActBtn" class="btn btn-danger" data-action="stop">СТОП</a>
+            {% else %}
+                <a id="timesActBtn" class="btn btn-success" data-action="start">СТАРТ</a>
+            {% endif %}
+            
+            {% if task.times|length %}
+                <br>
+                <br>
+                <span>Затрачено: {{ task.totalTime.h }}ч {{ task.totalTime.i }}мин</span>
+            {% endif %}
+            <script>
+                $('#timesActBtn').click(function(){
+                    ajaxLoad(1);
+                    url = '{{ path('pletnev_pm_task_times' , {taskId: task.id}) }}';
+                    $btn = $(this);
+                    params = {
+                        action: $btn.data('action')
+                    };
+                    $.get(url , params , function(data){
+                        $('#times').replaceWith(data);
+                        ajaxLoad(0);
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>

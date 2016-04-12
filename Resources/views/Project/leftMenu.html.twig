@@ -1,0 +1,7 @@
+{% for project in projects %}
+    {% set path = path('pletnev_pm_tasks' , {id : project.id}) %}
+    {% set icon = project.icon is defined ? '<i class="glyphicon glyphicon-'~project.icon~'"></i>' : '' %}
+    {% set active = id == project.id ? 'active' : '' %}
+    
+    <li class="{{ active }}"><a class="" href="{{ path }}">{{ icon|raw }}<span> {{ project.title }}</span></a></li>
+{% endfor %}
