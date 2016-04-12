@@ -45,13 +45,10 @@
             </join-table>
         </many-to-many>
         
-<<<<<<< HEAD
         <many-to-one target-entity="Application\Sonata\UserBundle\Entity\User" field="author">
             <join-column name="author_id"/>
         </many-to-one>
         
-=======
->>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
         <one-to-many target-entity="TaskTime" mapped-by="task" field="times">
             <cascade>
                 <cascade-all/>
