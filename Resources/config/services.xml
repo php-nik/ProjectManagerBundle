@@ -19,6 +19,7 @@
     -->
     
     <services>
+<<<<<<< HEAD
         <!--<service id="pletnev_pm.checkofficeuser" class="Pletnev\ProjectManagerBundle\Controller\CheckUserListener">
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
         </service>-->
@@ -58,6 +59,19 @@
         
         <service id="pletnev_pm.task_subscriber" class="Pletnev\ProjectManagerBundle\EventListener\TaskSubscriber">
             <tag name="doctrine.event_subscriber"/>
+=======
+        <service id="pletnev_pm.checkofficeuser" class="Pletnev\ProjectManagerBundle\Controller\CheckUserListener">
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
+        </service>
+        
+        <service id="pletnev_pm.tasksubscriber" class="Pletnev\ProjectManagerBundle\EventListener\TaskSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="pm_settings_extension" class="Pletnev\ProjectManagerBundle\Twig\SettingsExtension" public="false">
+            <tag name="twig.extension" />
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
             <argument type="service" id="service_container" />
         </service>
     

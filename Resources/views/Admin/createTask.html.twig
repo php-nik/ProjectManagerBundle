@@ -1,0 +1,16 @@
+{%  extends "PletnevProjectManagerBundle:Admin:tabs.html.twig" %}
+
+{% block breadcrumbs %}
+    <li><a href="{{ path(route_prefix) }}"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li><a href="{{ path(route_prefix~'_projects') }}">Проекты</a></li>
+    <li><a href="{{ path(route_prefix~'_project' , {projectSlug: project.slug}) }}">{{ project }}</a></li>
+    <li>Новая задача</li>
+{% endblock %}
+
+
+
+{% block body_inner %}
+    
+    {{ form(form) }}
+    
+{% endblock %}

@@ -1,0 +1,13 @@
+{%  extends "PletnevProjectManagerBundle::base.html.twig" %}
+
+{% block menu_left %}
+    
+    {% set menuItems = {
+        pletnev_pm_admin : { title: 'Проекты' , icon: 'home' , routes: []},
+        pletnev_pm_author : { title: 'Проекты' , icon: 'home' , routes: []},
+    } %}
+    
+    <li class="nav-header">Проекты</li>
+    <li><a href="{{ path('pletnev_pm_admin_project_create') }}"><i class="glyphicon glyphicon-plus"></i> Новый проект</a></li>
+    {{ render(controller('PletnevProjectManagerBundle:Admin:leftMenu' , {projectId: app.request.get('projectId')})) }}
+{% endblock %}

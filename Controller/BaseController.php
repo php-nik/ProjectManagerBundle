@@ -10,6 +10,7 @@ use Pletnev\ProjectManagerBundle\Manager\SettingsManager;
 use Pletnev\ProjectManagerBundle\Manager\ProjectManager;
 use Pletnev\ProjectManagerBundle\Manager\TaskManager;
 
+
 class BaseController extends Controller {
 
     /**

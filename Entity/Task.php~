@@ -3,7 +3,10 @@
 namespace Pletnev\ProjectManagerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
+=======
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
 
 /**
  * Task
@@ -69,14 +72,21 @@ class Task {
      * @var \Doctrine\Common\Collections\Collection
      */
     private $watcherUsers;
+<<<<<<< HEAD
     private $times;
+=======
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
 
     /**
      * Constructor
      */
     public function __construct() {
+<<<<<<< HEAD
         $this->watcherUsers = new ArrayCollection();
         $this->times = new ArrayCollection();
+=======
+        $this->watcherUsers = new \Doctrine\Common\Collections\ArrayCollection();
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
     }
 
     /**
@@ -171,7 +181,11 @@ class Task {
      */
     public function setHours($hours) {
         $this->hours = $hours;
+<<<<<<< HEAD
         $this->minutes = intval($hours * 60);
+=======
+
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
         return $this;
     }
 
@@ -181,9 +195,12 @@ class Task {
      * @return float
      */
     public function getHours() {
+<<<<<<< HEAD
         if ($this->hours === null) {
             $this->hours = intval($this->minutes) / 60;
         }
+=======
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
         return $this->hours;
     }
 
@@ -365,6 +382,7 @@ class Task {
         return $this->isPaid;
     }
 
+<<<<<<< HEAD
     /**
      * @var integer
      */
@@ -429,4 +447,6 @@ class Task {
         return $reference->diff($endTime);
     }
 
+=======
+>>>>>>> 988cad65d9dac9ceaff924334c5e4769be35e105
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="pletnev_pm_author" path="/">
+        <default key="_controller">PletnevProjectManagerBundle:Author:index</default>
+    </route>
+    
+    <route id="pletnev_pm_author_projects" path="/projects">
+        <default key="_controller">PletnevProjectManagerBundle:Author:projects</default>
+    </route>
+    
+    <route id="pletnev_pm_author_project_create" path="/project/create">
+        <default key="_controller">PletnevProjectManagerBundle:Author:createProject</default>
+    </route>
+    
+    <route id="pletnev_pm_author_project_edit" path="/project/{projectSlug}/edit">
+        <default key="_controller">PletnevProjectManagerBundle:Author:editProject</default>
+    </route>
+    
+    <route id="pletnev_pm_author_project" path="/project/{projectSlug}">
+        <default key="_controller">PletnevProjectManagerBundle:Author:project</default>
+    </route>
+    
+    <route id="pletnev_pm_author_tasks" path="/project/{projectSlug}/tasks">
+        <default key="_controller">PletnevProjectManagerBundle:Author:tasks</default>
+    </route>
+    
+    <route id="pletnev_pm_author_task_create" path="/project/{projectSlug}/task/create">
+        <default key="_controller">PletnevProjectManagerBundle:Author:createTask</default>
+    </route>
+    
+    <route id="pletnev_pm_author_task_delete" path="/project/{projectSlug}/task/{taskId}/delete">
+        <default key="_controller">PletnevProjectManagerBundle:Author:deteleTask</default>
+    </route>
+    
+    <route id="pletnev_pm_author_task_edit" path="/project/{projectSlug}/task/{taskId}/edit">
+        <default key="_controller">PletnevProjectManagerBundle:Author:editTask</default>
+    </route>
+    
+    <route id="pletnev_pm_author_task" path="/project/{projectSlug}/task/{taskId}">
+        <default key="_controller">PletnevProjectManagerBundle:Author:task</default>
+    </route>
+    
+    <route id="pletnev_pm_author_profile" path="/profile">
+        <default key="_controller">PletnevProjectManagerBundle:Author:profile</default>
+    </route>
+    
+    <route id="pletnev_pm_author_settings" path="/settings">
+        <default key="_controller">PletnevProjectManagerBundle:Author:settings</default>
+    </route>
+</routes>

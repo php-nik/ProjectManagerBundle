@@ -1,0 +1,27 @@
+{%  extends "PletnevProjectManagerBundle:Admin:layout.html.twig" %}
+
+
+
+
+{% block body %}
+    {% set args = {projectSlug: app.request.get('projectSlug')} %}
+
+    {% set tabs = [
+        {route: route_prefix~'_project' , title:'О проекте' , icon: '' , routes: [] , args: args },
+
+        {route: route_prefix~'_tasks' , title:'Задачи' , icon: 'edit' , routes: [route_prefix~'_task',route_prefix~'_task_edit'] , args: args },
+
+        {route: route_prefix~'_task_create' , title:'Новая задача' , icon: 'plus' , routes: [] , args: args },
+
+        {route: route_prefix~'_project_edit' , title:'Настройки' , icon: 'wrench' , routes: [] , args: args },
+    ] %}
+    
+    <ul class="nav nav-tabs">
+        {% for tab in tabs %}
+            {% set route = tab.route %}
+            {% set icon = tab.icon is defined and tab.icon ? '<i class="glyphicon glyphicon-'~tab.icon~'"></i>' : '' %}
+            <li class="{{ app.request.get('_route') == route or app.request.get('_route') in tab.routes ? 'active' : '' }}"><a href="{{ path(route , tab.args) }}">{{ icon|raw }} <span> {{ tab.title }}</span></a></li>
+            {% endfor %}
+    </ul>
+            <div>{% block body_inner %}{% endblock %}</div>
+{% endblock %}
