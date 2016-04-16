@@ -7,6 +7,8 @@ use Pletnev\ProjectManagerBundle\Entity\Project;
 use Pletnev\ProjectManagerBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
 use Pletnev\ProjectManagerBundle\Form\TaskType;
+use Pletnev\ProjectManagerBundle\Entity\TaskTime;
+use Symfony\Component\HttpFoundation\Response;
 
 class TaskController extends BaseController {
 
@@ -56,8 +58,8 @@ class TaskController extends BaseController {
         ];
     }
 
-    protected function createProjectForm(Project $project, Task $task) {
-        return $this->createForm(new TaskType($project, $this->getDoctrine()), $task);
+    protected function createTaskForm(Task $task) {
+        return $this->createForm(new TaskType($task->getProject(), $this->getDoctrine()), $task);
     }
 
     protected function createTask(Project $project) {
@@ -81,7 +83,7 @@ class TaskController extends BaseController {
         }
 
         $task = $this->createTask($project);
-        $form = $this->createProjectForm($project, $task);
+        $form = $this->createTaskForm($task);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -105,35 +107,21 @@ class TaskController extends BaseController {
      */
     public function editAction(Request $request, Task $task) {
 
-
-        //$oldTask = clone $task;
-
-        $project = $task->getProject();
-
-        $form = $this->createForm(new TaskType($project, $this->getDoctrine()), $task);
+        $form = $this->createTaskForm($task);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //$task = $form->getData();
-            //$eventDispatcher = $this->getEventDispatcher();
-            //$eventDispatcher->dispatch('pm.task.preUpdate', new TaskEvent($task, $user, $oldTask));
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($task);
-            $em->flush();
-
+            $this->getTaskManager()->save($task);
             $this->addNoticeMessage('Задача успешно сохранена');
-
-            //return $this->redirect($this->generateUrl('pletnev_pm_tasks', array('projectSlug' => $projectSlug)));
             return $this->redirectToRoute('pletnev_pm_tasks', ['id' => $project->getId()]);
         }
 
         return array(
-            'project' => $project,
+            'project' => $task->getProject(),
             'task' => $task,
             'form' => $form->createView(),
+            'project_manager'=>  $this->getProjectManager(),
         );
     }
 
@@ -145,6 +133,9 @@ class TaskController extends BaseController {
      * @Template
      */
     public function timesAction(Request $request, $taskId) {
+        if(!$this->getProjectManager()->isAdmin()){
+            return new Response();
+        }
         $action = $request->get('action');
 
         $task = $this->getDoctrine()->getRepository('PletnevProjectManagerBundle:Task')->find($taskId);
