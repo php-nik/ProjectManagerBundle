@@ -7,10 +7,10 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="title" type="string" column="title" length="255"/>
-        <field name="url" type="string" column="url" length="255"/>
-        <field name="createDate" type="datetime" column="create_date"/>
-        <field name="description" type="text" column="description"/>
-        <field name="slug" type="string" length="32" unique="true"/>
+        <field name="url" type="string" column="url" length="255" nullable="true"/>
+        <field name="createDate" type="datetime" column="create_date" nullable="true"/>
+        <field name="description" type="text" column="description" nullable="true"/>
+        <field name="slug" type="string" length="32" unique="true" nullable="true"/>
     
         <many-to-one target-entity="Application\Sonata\UserBundle\Entity\User" field="author">
             <join-column name="author_id"/>
