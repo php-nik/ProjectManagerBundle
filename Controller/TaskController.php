@@ -114,7 +114,7 @@ class TaskController extends BaseController {
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getTaskManager()->save($task);
             $this->addNoticeMessage('Задача успешно сохранена');
-            return $this->redirectToRoute('pletnev_pm_tasks', ['id' => $project->getId()]);
+            return $this->redirectToRoute('pletnev_pm_tasks', ['id' => $task->getProject()->getId()]);
         }
 
         return array(
