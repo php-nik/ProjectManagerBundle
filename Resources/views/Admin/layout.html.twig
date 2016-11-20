@@ -4,8 +4,8 @@
 
 
 {% block user_dropdown_menu %}
-    <li><a href="{{ path(route_prefix~'_profile') }}"><i class="glyphicon glyphicon-user"></i> Профиль</a></li>
-    <li><a href="{{ path(route_prefix~'_settings') }}"><i class="glyphicon glyphicon-wrench"></i> Настройки</a></li>
+    <li><a href="{{ path('pletnev_pm_profile') }}"><i class="glyphicon glyphicon-user"></i> Профиль</a></li>
+    <li><a href="{{ path('pletnev_pm_settings') }}"><i class="glyphicon glyphicon-wrench"></i> Настройки</a></li>
 {% endblock %}
 
 
@@ -18,12 +18,12 @@
     } %}
     
     <li class="nav-header">Проекты</li>
-    <li><a href="{{ path(route_prefix~'_project_create') }}"><i class="glyphicon glyphicon-plus"></i> Новый проект</a></li>
+    <li><a href="{{ path('pletnev_pm_project_create') }}"><i class="glyphicon glyphicon-plus"></i> Новый проект</a></li>
     {{ render(controller('PletnevProjectManagerBundle:Admin:leftMenu' , {projectSlug: app.request.get('projectSlug')})) }}
 {% endblock %}
 
 {% block menu_top %}
     <li>
-        <a href="{{ path(route_prefix~'_projects') }}">Проекты</a>
+        <a href="{{ path('pletnev_pm_projects') }}">Проекты</a>
     </li>
 {% endblock %}

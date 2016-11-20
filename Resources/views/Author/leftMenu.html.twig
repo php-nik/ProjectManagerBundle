@@ -1,8 +1,0 @@
-{% set route_prefix = 'pletnev_pm_author' %}
-
-{% for project in projects %}
-    {% set path = path(route_prefix~'_tasks' , {projectSlug : project.slug}) %}
-    {% set icon = project.icon is defined ? '<i class="glyphicon glyphicon-'~project.icon~'"></i>' : '' %}
-    {% set active = app.request.get('projectSlug') == project.slug ? 'active' : '' %}
-    <li class="{{ active }}"><a class="" href="{{ path }}">{{ icon|raw }}<span> {{ project.title }}</span></a></li>
-{% endfor %}

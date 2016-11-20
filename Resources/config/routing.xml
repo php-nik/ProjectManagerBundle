@@ -9,11 +9,11 @@
     </route>
     
     <route id="pletnev_pm_profile" path="/profile">
-        <default key="_controller">PletnevProjectManagerBundle:User:profile</default>
+        <default key="_controller">PletnevProjectManagerBundle:Admin:profile</default>
     </route>
     
     <route id="pletnev_pm_settings" path="/settings">
-        <default key="_controller">PletnevProjectManagerBundle:User:settings</default>
+        <default key="_controller">PletnevProjectManagerBundle:Admin:settings</default>
     </route>
     
     <route id="pletnev_pm" path="/">
